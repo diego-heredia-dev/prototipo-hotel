@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+.vscode/
+
+# Build output
+bin/
+obj/
+
+# Coverage reports
+coveragereport/
+TestResults/
+
+# User files
+*.user
+*.suo
+
+# Logs
+*.log

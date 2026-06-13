@@ -1,0 +1,163 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.app {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HEADER */
+.app__header {
+    margin-bottom: 20px;
+}
+
+.app__title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* FORMULARIO */
+.booking-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.booking-form__title {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.booking-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.booking-form__input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.booking-form__button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: #2f80ed;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.booking-form__button:hover {
+    background-color: #1366d6;
+}
+
+/* SECCIONES */
+.bookings,
+.services {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.bookings__title,
+.services__title {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* BUSCADOR */
+.bookings__search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.bookings__input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.bookings__button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bookings__button:hover {
+    background-color: #1e874b;
+}
+
+/* TABLAS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+/* FILAS */
+.bookings__row:hover,
+.services__row:hover {
+    background-color: #f9f9f9;
+}
+
+/* BOTÓN CHECK-IN */
+.bookings__checkin-btn {
+    padding: 6px 10px;
+    border: none;
+    background-color: #f2994a;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bookings__checkin-btn:hover {
+    background-color: #d9822b;
+}
+
+.bookings__checkin-btn:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+}
+
+/* ESTADO VACÍO */
+.services__empty {
+    margin-top: 10px;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}

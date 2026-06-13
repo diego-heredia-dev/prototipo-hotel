@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel App</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" type="module" defer></script>
+</head>
+<body>
+    <main class="app">
+
+        <header class="app__header">
+            <h1 class="app__title">Sistema de Reservas</h1>
+        </header>
+
+        <form class="booking-form" id="booking-form">
+            <h2 class="booking-form__title">Crear Reserva</h2>
+
+            <label>Guest IDs (1, 2)</label>
+            <input class="booking-form__input" id="guest-ids" required>
+
+            <label for="room-select">Habitacion:</label>
+            <select class="booking-form__input" id="room-select" required>
+                <option value="">Seleccione</option>
+            </select>
+
+            <label for="start-date">Inicio</label>
+            <input class="booking-form__input" type="datetime-local" id="start-date" required>
+
+            <label for="end-date">Fin</label>
+            <input class="booking-form__input" type="datetime-local" id="end-date" required>
+
+            <button class="booking-form__button" type="submit">Crear Reserva</button>
+        </form>
+
+        <section class="bookings">
+            <h2 class="bookings__title">Reservas</h2>
+
+            <div class="bookings__search">
+                <input class="bookings__input" id="search-input" placeholder="Buscar por huesped">
+                <button type="button" class="bookings__button" id="search-button">Buscar</button>
+            </div>
+
+            <table class="bookings__table">
+                <thead>
+                    <tr>
+                        <th>Huéspedes</th>
+                        <th>Habitación</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody id="bookings-body"></tbody>
+            </table>
+        </section>
+
+        <template id="booking-row-template">
+            <tr class="bookings__row">
+                <td class="bookings__guests"></td>
+                <td class="bookings__room"></td>
+                <td class="bookings__start"></td>
+                <td class="bookings__end"></td>
+                <td class="bookings__status"></td>
+                <td class="bookings__action">
+                    <button class="bookings__checkin-btn">Check-in</button>
+                </td>
+            </tr>
+        </template>
+        
+        <section class="services">
+            <h2 class="services__title">Servicios</h2>
+
+            <table class="services__table">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Empleado</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
+
+                <tbody id="services-body"></tbody>
+            </table>
+
+            <p id="services-empty" class="services__empty" style="display:none;">
+                No hay servicios disponibles
+            </p>
+        </section>
+
+        <template id="service-row-template">
+            <tr class="services__row">
+                <td class="services__name"></td>
+                <td class="services__employee"></td>
+                <td class="services__phone"></td>
+            </tr>
+        </template>
+    </main>
+</body>
+</html>
