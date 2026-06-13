@@ -16,3 +16,6 @@ TestResults/
 
 # Logs
 *.log
+
+coverage.xml
+*.coverage
