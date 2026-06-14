@@ -22,8 +22,13 @@ builder.Services.AddScoped<RoomService>();
 builder.Services.AddScoped<ServiceRepository>();
 builder.Services.AddScoped<ServiceService>();
 
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer("Server=.;Database=HotelAppDB;Trusted_Connection=True;TrustServerCertificate=True;"));
+    options.UseNpgsql(connectionString));
+
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer("Server=.;Database=HotelAppDB;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -58,11 +63,18 @@ app.UseCors("AllowFrontend");
 app.UseAuthorization();
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
 // Test DB connection
+/*
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();
 }
-
+*/
 app.Run();
