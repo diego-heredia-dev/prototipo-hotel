@@ -22,7 +22,24 @@ builder.Services.AddScoped<RoomService>();
 builder.Services.AddScoped<ServiceRepository>();
 builder.Services.AddScoped<ServiceService>();
 
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+if (string.IsNullOrEmpty(databaseUrl))
+{
+    throw new Exception("DATABASE_URL not found");
+}
+
+var uri = new Uri(databaseUrl);
+
+var userInfo = uri.UserInfo.Split(':');
+
+var connectionString =
+    $"Host={uri.Host};" +
+    $"Port={uri.Port};" +
+    $"Database={uri.AbsolutePath.TrimStart('/')};" +
+    $"Username={userInfo[0]};" +
+    $"Password={userInfo[1]};" +
+    $"SSL Mode=Require;Trust Server Certificate=true;";
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
