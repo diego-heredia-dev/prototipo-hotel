@@ -51,8 +51,8 @@ namespace HotelApp.Services
             return new Booking
             {
                 RoomId = dto.RoomId,
-                StartDate = dto.StartDate,
-                EndDate = dto.EndDate,
+                StartDate = DateTime.SpecifyKind(dto.StartDate, DateTimeKind.Utc),
+                EndDate = DateTime.SpecifyKind(dto.EndDate, DateTimeKind.Utc),
                 Status = BookingStatus.IN_PROGRESS,
                 BookingGuests = dto.GuestIds.Select(id => new BookingGuest
                 {

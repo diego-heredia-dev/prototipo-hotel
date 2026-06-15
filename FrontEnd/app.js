@@ -40,8 +40,8 @@ form.addEventListener("submit", async (e) => {
 
     const bookingData = {
         roomId: parseInt(roomId),
-        startDate,
-        endDate,
+        startDate: new Date(startDate).toISOString(),
+        endDate: new Date(endDate).toISOString(),
         numberOfGuests: guestIds.length,
         guestIds
     };
