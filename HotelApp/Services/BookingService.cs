@@ -28,8 +28,12 @@ namespace HotelApp.Services
 
         private void ValidateBookingDates(CreateBookingDto dto)
         {
+            
             if (dto.EndDate <= dto.StartDate)
                 throw new Exception("La fecha de salida debe ser posterior a la fecha de ingreso.");
+
+            if (dto.StartDate < DateTime.UtcNow)
+                throw new Exception("No se pueden crear reservas para fechas pasadas");
         }
 
         private void ValidateRoomAvailability(CreateBookingDto dto)
@@ -53,7 +57,7 @@ namespace HotelApp.Services
                 RoomId = dto.RoomId,
                 StartDate = DateTime.SpecifyKind(dto.StartDate, DateTimeKind.Utc),
                 EndDate = DateTime.SpecifyKind(dto.EndDate, DateTimeKind.Utc),
-                Status = BookingStatus.IN_PROGRESS,
+                Status = BookingStatus.RESERVED,
                 BookingGuests = dto.GuestIds.Select(id => new BookingGuest
                 {
                     GuestId = id
