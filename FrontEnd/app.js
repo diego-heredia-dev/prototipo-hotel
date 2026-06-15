@@ -49,7 +49,7 @@ form.addEventListener("submit", async (e) => {
     console.log("BookingData:", bookingData);
 
     try {
-        const request = await fetch("https://localhost:7203/api/booking", {
+        const request = await fetch("https://prototipo-hotel-production.up.railway.app/api/booking", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -107,10 +107,10 @@ searchButton.addEventListener("click", async (e) => {
 async function loadBookings() {
     let url;
     if(searchInput.value) {
-        url = `https://localhost:7203/api/booking/search?query=${searchInput.value}`;
+        url = `https://prototipo-hotel-production.up.railway.app/api/booking/search?query=${searchInput.value}`;
     }
     else {
-        url = `https://localhost:7203/api/booking/active`;
+        url = `https://prototipo-hotel-production.up.railway.app/api/booking/active`;
     }        
 
     console.log("search input:", searchInput.value);
@@ -124,7 +124,7 @@ async function loadBookings() {
 }
 
 async function loadRooms() {
-    const request = await fetch("https://localhost:7203/api/room");
+    const request = await fetch("https://prototipo-hotel-production.up.railway.app/api/room");
     rooms = await request.json();
 
     const select = document.getElementById("room-select");
@@ -143,7 +143,7 @@ async function checkIn(id) {
     if (!confirm("¿Realizar check-in?")) return;
 
     try {
-        const request = await fetch(`https://localhost:7203/api/booking/${id}/checkin`, {
+        const request = await fetch(`https://prototipo-hotel-production.up.railway.app/api/booking/${id}/checkin`, {
             method: "POST"
         });
 
@@ -183,7 +183,7 @@ function renderServices(services) {
 }
 
 async function loadServices() {
-    const request = await fetch("https://localhost:7203/api/service");
+    const request = await fetch("https://prototipo-hotel-production.up.railway.app/api/service");
     const services = await request.json();
 
     renderServices(services);
