@@ -64,7 +64,7 @@ namespace HotelApp.Repositories
 
         public List<Booking> GetActiveAndFuture()
         {
-            var today = DateTime.Now;
+            var today = DateTime.UtcNow;
 
             return _context.Bookings
                 .Include(b => b.Room)
