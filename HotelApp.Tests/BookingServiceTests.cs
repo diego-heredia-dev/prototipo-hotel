@@ -44,8 +44,8 @@ namespace HotelApp.Tests
             var dto = new CreateBookingDto
             {
                 RoomId = 1,
-                StartDate = new DateTime(2025, 1, 10),
-                EndDate = new DateTime(2025, 1, 5),
+                StartDate = DateTime.UtcNow.AddDays(10),
+                EndDate = DateTime.UtcNow.AddDays(15),
                 GuestIds = new List<int> { 1 },
                 NumberOfGuests = 1
             };
@@ -73,8 +73,8 @@ namespace HotelApp.Tests
             _context.Bookings.Add(new Booking
             {
                 RoomId = 1,
-                StartDate = new DateTime(2025, 1, 10),
-                EndDate = new DateTime(2025, 1, 15)
+                StartDate = DateTime.UtcNow.AddDays(10),
+                EndDate = DateTime.UtcNow.AddDays(15),
             });
 
             _context.SaveChanges();
@@ -90,8 +90,8 @@ namespace HotelApp.Tests
             var dto = new CreateBookingDto
             {
                 RoomId = 1,
-                StartDate = new DateTime(2025, 1, 12),
-                EndDate = new DateTime(2025, 1, 14),
+                StartDate = DateTime.UtcNow.AddDays(12),
+                EndDate = DateTime.UtcNow.AddDays(14),
                 GuestIds = new List<int> { 1 },
                 NumberOfGuests = 1
             };
@@ -128,8 +128,8 @@ namespace HotelApp.Tests
             var dto = new CreateBookingDto
             {
                 RoomId = 1,
-                StartDate = new DateTime(2025, 1, 10),
-                EndDate = new DateTime(2025, 1, 15),
+                StartDate = DateTime.UtcNow.AddDays(10),
+                EndDate = DateTime.UtcNow.AddDays(15),
                 GuestIds = new List<int> { 1, 2 },
                 NumberOfGuests = 2
             };
@@ -193,8 +193,8 @@ namespace HotelApp.Tests
             var dto = new CreateBookingDto
             {
                 RoomId = 1,
-                StartDate = new DateTime(2025, 1, 10),
-                EndDate = new DateTime(2025, 1, 15),
+                StartDate = DateTime.UtcNow.AddDays(10),
+                EndDate = DateTime.UtcNow.AddDays(15),
                 GuestIds = new List<int> { 1, 2 },
                 NumberOfGuests = 2
             };
@@ -206,7 +206,7 @@ namespace HotelApp.Tests
 
             // Assert
             Assert.That(booking, Is.Not.Null);
-            Assert.That(booking.Status, Is.EqualTo(BookingStatus.IN_PROGRESS));
+            Assert.That(booking.Status, Is.EqualTo(BookingStatus.RESERVED));
         }
 
         [Test]
@@ -220,7 +220,7 @@ namespace HotelApp.Tests
             };
 
             //Act
-            var result = GuestService.isGuestDataValid(dto);
+            var result = GuestService.IsGuestDataValid(dto);
 
             //Assert
             Assert.That(result, Is.False);
