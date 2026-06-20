@@ -210,7 +210,7 @@ namespace HotelApp.Tests
         }
 
         [Test]
-        public void isGuestDataValid_MissingFullName_ReturnFalse()
+        public void IsGuestDataValid_MissingFullName_ReturnFalse()
         {
             //Arrange
             var dto = new CreateGuestDto
