@@ -225,5 +225,21 @@ namespace HotelApp.Tests
             //Assert
             Assert.That(result, Is.False);
         }
+
+        [Test]
+        public void IsBookingExpired_PastCheckOutDate_ReturnsTrue()
+        {
+            //Arrange
+            var booking = new Booking
+            {
+                EndDate = DateTime.UtcNow.AddDays(-1),
+            };
+
+            //Act
+            var result = BookingService.IsBookingExpired(booking);
+
+            //Assert
+            Assert.That(result, Is.True);
+        }
     }
 }
