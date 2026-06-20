@@ -135,5 +135,10 @@ namespace HotelApp.Services
         {
             return booking.EndDate < DateTime.UtcNow;
         }
+
+        public static bool IsSearchQueryValid(string query)
+        {
+            return !string.IsNullOrWhiteSpace(query);
+        }
     }
 }
