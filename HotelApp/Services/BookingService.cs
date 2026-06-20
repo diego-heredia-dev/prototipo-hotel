@@ -97,6 +97,9 @@ namespace HotelApp.Services
             if (booking == null)
                 throw new Exception("Reserva no encontrada");
 
+            if (IsBookingExpired(booking))
+                throw new Exception("La reserva ha expirado");
+
             if (booking.Status == BookingStatus.CANCELLED)
                 throw new Exception("No se puede hacer check-in a una reserva eliminada");
 
