@@ -67,6 +67,9 @@ namespace HotelApp.Services
 
         public List<BookingResponseDto> SearchBookings(string query)
         {
+            if (!IsSearchQueryValid(query))
+                return new List<BookingResponseDto>();
+
             var bookings = _bookingRepository.SearchByGuest(query);
 
             return bookings.Select(b => new BookingResponseDto
