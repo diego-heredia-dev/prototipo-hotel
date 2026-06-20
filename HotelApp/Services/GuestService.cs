@@ -15,6 +15,9 @@ namespace HotelApp.Services
 
         public void CreateGuest(CreateGuestDto dto)
         {
+            if (!IsGuestDataValid(dto))
+                throw new Exception("Guest data is invalid");
+  
             var existing = _guestRepository.GetByDocument(dto.DocumentNumber);
 
             if (existing != null)
