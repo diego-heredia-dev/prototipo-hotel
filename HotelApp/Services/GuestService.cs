@@ -30,5 +30,11 @@ namespace HotelApp.Services
 
             _guestRepository.Add(guest);
         }
+
+        public static bool IsGuestDataValid(CreateGuestDto dto)
+        {
+            return !string.IsNullOrWhiteSpace(dto.FullName)
+                && !string.IsNullOrWhiteSpace(dto.DocumentNumber);
+        }
     }
 }
