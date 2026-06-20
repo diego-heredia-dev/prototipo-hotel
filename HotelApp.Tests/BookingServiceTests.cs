@@ -208,5 +208,22 @@ namespace HotelApp.Tests
             Assert.That(booking, Is.Not.Null);
             Assert.That(booking.Status, Is.EqualTo(BookingStatus.IN_PROGRESS));
         }
+
+        [Test]
+        public void isGuestDataValid_MissingFullName_ReturnFalse()
+        {
+            //Arrange
+            var dto = new CreateGuestDto
+            {
+                FullName = "",
+                DocumentNumber = "123456"
+            };
+
+            //Act
+            var result = GuestService.isGuestDataValid(dto);
+
+            //Assert
+            Assert.That(result, Is.False);
+        }
     }
 }
