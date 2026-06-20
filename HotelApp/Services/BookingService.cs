@@ -128,5 +128,9 @@ namespace HotelApp.Services
             }).ToList();
         }
 
+        public static bool IsBookingExpired(Booking booking)
+        {
+            return booking.EndDate < DateTime.UtcNow;
+        }
     }
 }
