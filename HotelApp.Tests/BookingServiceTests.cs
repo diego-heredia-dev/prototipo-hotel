@@ -241,5 +241,18 @@ namespace HotelApp.Tests
             //Assert
             Assert.That(result, Is.True);
         }
+
+        [Test]
+        public void IsSearchQueryValid_EmptyQuery_ReturnsFalse()
+        {
+            //Arrange
+            string query = "";
+
+            //Act
+            var result = BookingService.IsSearchQueryValid(query);
+
+            //Assert
+            Assert.That(result, Is.False);
+        }
     }
 }
